@@ -5,7 +5,8 @@ enum Move { rock, paper, scissors }
 
 void main() {
   final rng = Random();
-  var score = 0;
+  var Playerscore = 0;
+  var IAscore = 0;
   while (true) {
     stdout.write('Rock, paper, scissors? (r/p/s) ');
     final input = stdin.readLineSync();
@@ -24,18 +25,15 @@ void main() {
       print('AI played $aiMove');
 
       if (playerMove == aiMove) {
-        print('it\'s a draw, score = $score');
+        print('it\'s a draw, score = $Playerscore - $IAscore');
       } else if (playerMove == Move.rock && aiMove == Move.scissors ||
           playerMove == Move.paper && aiMove == Move.rock ||
           playerMove == Move.scissors && aiMove == Move.paper) {
-            if (score >= 0){
-score++;
-            }
-        print('you win, score = $score');
-      } else { if (score > 0){
-score--;
-            }
-        print('you lose, score = $score');
+          Playerscore++;           
+        print('you win, score = $Playerscore - $IAscore');
+      } else {
+        IAscore++;
+        print('you lose, score = $Playerscore - $IAscore');
       }
     } else if (input == 'q') {
       break;
